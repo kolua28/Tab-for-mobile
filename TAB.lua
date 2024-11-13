@@ -45,12 +45,20 @@ close.Text = 'close'
 
 function closee()
 	if Frame.Visible == true then
+		if leader == false then
 		game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0.8,0,-2,0)}):Play()
+		else
+		game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0.7,0,-2,0)}):Play()
+		end
 		task.wait(0.5)
 	Frame.Visible = false
 		close.Text = 'open'
 	else
+		if leader == false then
 		game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0.8,0,0,0)}):Play()
+		else
+			game:GetService('TweenService'):Create(Frame,TweenInfo.new(0.5,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0.7,0,0,0)}):Play()
+		end
 		Frame.Visible = true
 		task.wait(0.5)
 		close.Text = 'close'
