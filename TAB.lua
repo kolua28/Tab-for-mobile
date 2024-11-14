@@ -1,3 +1,53 @@
+local opt = 10
+local openscript = false
+local mainq = Instance.new("ScreenGui",game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+local Frame = Instance.new('Frame',mainq)
+Frame.Size = UDim2.new(0.5,0,0.5,0)
+Frame.Active = true
+Frame.Draggable = true
+Frame.BackgroundColor3 = Color3.new(0.8,0.8,0.8)
+Frame.BorderSizePixel = 0
+local text = Instance.new('TextLabel',Frame)
+text.Size = UDim2.new(1,0,0.3,0)
+text.BackgroundTransparency = 1
+text.Font = Enum.Font.RobotoMono
+text.TextScaled = true
+text.Text = 'Enable Tab Optimization?'
+local b1 = Instance.new('TextButton',Frame)
+b1.BackgroundColor3 = Color3.new(0.8,0.8,0.8)
+b1.Size = UDim2.new(0.5,0,0.7)
+b1.Position = UDim2.new(0,0,0.3,0)
+b1.BorderSizePixel = 1
+b1.TextScaled = true
+b1.Text = 'Turn on'
+local b2 = Instance.new('TextButton',Frame)
+b2.BackgroundColor3 = Color3.new(0.8,0.8,0.8)
+b2.Size = UDim2.new(0.5,0,0.7)
+b2.Position = UDim2.new(0.5,0,0.3,0)
+b2.BorderSizePixel = 1
+b2.TextScaled = true
+b2.Text = 'Turn off'
+function Activated()
+	b1.Active = false
+	b2.Active = false
+	game:GetService('TweenService'):Create(Frame,TweenInfo.new(2,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Size = UDim2.new(0.5,0,0,0)}):Play()
+	task.wait(2)
+	mainq:Destroy()
+end
+b1.Activated:Connect(function()
+	openscript = true
+end)
+b2.Activated:Connect(function()
+	opt = 1
+	openscript = true
+end)
+b1.Activated:Connect(Activated)
+b2.Activated:Connect(Activated)
+while wait(0.1) do
+	if openscript == true then
+		break
+	end
+end
 local main = Instance.new("ScreenGui")
 local Frame = Instance.new("ScrollingFrame")
 local ui = Instance.new('UIListLayout',Frame)
@@ -99,8 +149,8 @@ tabs.TextScaled = true
 tabs.Font = Enum.Font.RobotoMono
 tabs.Text = 'Wait...'
 tabs.Size = UDim2.new(1,0,0.2,0)
-game.StarterGui:SetCore('SendNotification',{Title = 'Loaded scriptV3';Text = 'SCRIPT BY KOLUA28';Icon = 'http://www.roblox.com/asset/?id=11982227421';})
-while wait(10) do
+game.StarterGui:SetCore('SendNotification',{Title = 'Loaded scriptV4';Text = 'SCRIPT BY KOLUA28';Icon = 'http://www.roblox.com/asset/?id=11982227421';})
+while wait(opt) do
 	for _,v in pairs(Frame:GetChildren()) do
 		if v.Name == 'deletethis' then
 			v:Destroy()
