@@ -1,6 +1,7 @@
 local opt = 10
 local openscript = false
 local mainq = Instance.new("ScreenGui",game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+mainq.ResetOnSpawn = false
 local Frame = Instance.new('Frame',mainq)
 Frame.Size = UDim2.new(0.5,0,0.5,0)
 Frame.Active = true
